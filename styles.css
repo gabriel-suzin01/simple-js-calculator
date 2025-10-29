@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+}
+
+.item{
+    display: flex;
+    flex: 1;
+    cursor: pointer;
+    background-color: white;
+    
+    width: 100px;
+    height: 100px;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+}
+
+.item:hover{
+    filter: invert(1);
+}
+
+#display{
+    width: 300px;
+    height: 100px;
+
+    background-color: white;
+    margin-top: 50px;
+}
+
+#calculator{
+    display: grid;
+    height: 90dvh;
+    gap: 1em;
+    
+    grid-template-columns: 100px 100px 100px;
+    grid-auto-rows: 100px;
+
+    justify-items: center;
+    align-items: center;
+
+    justify-content: center;
+    align-content: center;
+}
