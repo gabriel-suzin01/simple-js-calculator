@@ -1,21 +1,43 @@
-function soma(x, y){
-    return x + y
-}
+const submitButton = document.documentElement.querySelector("#submit");
+const items = document.documentElement.querySelectorAll(".item");
+const screenDisplay = document.documentElement.querySelector("#display");
+let clear = false;
 
-function sub(x, y){
-    return x - y
-}
+const regex = /^[0-9+\-*/ ]+$/ // também é possível implementar .() também
 
-function mul(x, y){
-    return x * y
-}
+Array.from(items).forEach((item) => {
+    item.addEventListener("click", () => {
+        if(item.id === "submit"){
+            calculate();
+        } else{
+            updateDisplay(item.textContent);
+        }
+    });
+});
 
-function divi(x, y){
-    if(y === 0 && x !== 0) return y / x
-    else if(x === 0 && y === 0) return "Division by 0."
-    return x / y
+function updateDisplay(value){
+    if(clear){
+        screenDisplay.textContent = "";
+        clear = false;
+    }
+
+    screenDisplay.textContent += value;
 }
 
 function calculate(){
+    screenDisplay.textContent
+
+    if(!regex.test(screenDisplay.textContent)){
+        screenDisplay.textContent = "Error! Invalid values!";
+        return;
+    }
     
+    try{
+        const result = eval(screenDisplay.textContent);
+        screenDisplay.textContent = result;
+    } catch{
+        screenDisplay.textContent = "Error!";
+    } finally{
+        clear = true;
+    }
 }
